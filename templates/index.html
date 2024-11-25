@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameSphere Analytics</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="linear_regression">Linear Regression</a>
+      <a href="naive_bayes">Naive Bayes</a>
+      <a href="knn">K-Nearest Neighbors (KNN)</a>
+    </div>
+
+    <div class="logo-container">
+      <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo">
+    </div>
+
+    <div class="nav-right">
+      <a href="svm">Support Vector Machine</a>
+      <a href="decision_tree">Decision Tree</a>
+      <a href="ann">Artificial Neural Network</a>
+    </div>
+  </nav>
+
+  <!-- Background Video Section -->
+  <div class="video-container">
+    <video autoplay loop muted class="background-video">
+      <source src="{{ url_for('static', filename='video/background.mp4') }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="overlay">
+      <h1>Welcome to GameSphere Analytics</h1>
+      <p>Your one-stop destination for gaming insights</p>
+    </div>
+  </div>
+
+<!-- Our Games Section -->
+<section id="our-games">
+  <h2>Our Games</h2>
+  <div class="games-grid">
+    {% for i in range(1, 101) %}
+    <img src="{{ url_for('static', filename='img/' ~ i|string ~ '.png') }}" alt="Game Image {{ i }}">
+
+{% endfor %}
+
+  </div>
+</section>
+
+
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-content">
+      <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="footer-logo">
+      <p>Philippines, Davao City</p>
+      <p>Contact Number: +1 23 456 789</p>
+      <p>Email: game@analytics.com</p>
+    </div>
+  </footer>
+</body>
+</html>

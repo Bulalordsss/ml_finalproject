@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Regression - Predict Game Sales</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-left">
+                <a href="linear_regression">Linear Regression</a>
+                <a href="naive_bayes">Naive Bayes</a>
+                <a href="knn">K-Nearest Neighbors (KNN)</a>
+            </div>
+            <div class="logo-container">
+                <!-- Wrap the logo image in an anchor tag to make it clickable -->
+                <a href="/">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo">
+                </a>
+            </div>
+            <div class="nav-right">
+                <a href="svm">Support Vector Machine</a>
+                <a href="decision_tree">Decision Tree</a>
+                <a href="ann">Artificial Neural Network</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="our-games">
+        <h2>Game Sales Prediction Using Linear Regression</h2>
+        <p>This model predicts the sales of a game based on its price, rating, stock availability, and release year. Linear Regression is effective in predicting continuous numerical values like game sales.</p>
+
+        <h3>Features:</h3>
+        <ul>
+            <li>Price</li>
+            <li>Rating</li>
+            <li>Stock Availability</li>
+            <li>Release Year</li>
+        </ul>
+
+        <form action="/linear_regression" method="POST">
+            <label for="rank">Rank:</label>
+            <input type="number" id="rank" name="rank" required>
+
+            <label for="rating">Rating (1-5):</label>
+            <input type="number" id="rating" name="rating" min="1" max="5" step="0.1" required>
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" required>
+
+            <label for="stock">Stock Availability:</label>
+            <input type="number" id="stock" name="stock" step="0.01" required>
+
+            <label for="release_year">Release Year:</label>
+            <input type="number" id="release_year" name="release_year" required>
+
+            <button type="submit">Predict Sales</button>
+        </form>
+
+        {% if prediction %}
+        <section>
+            <h3>Predicted Sales:</h3>
+            <p>{{ prediction }}</p>
+        </section>
+        {% elif error %}
+        <p style="color: red;">Error: {{ error }}</p>
+        {% endif %}
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Make the footer logo clickable too -->
+            <a href="/">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="footer-logo">
+            </a>
+            <p>Philippines, Davao City</p>
+            <p>Contact Number: +1 23 456 789</p>
+            <p>Email: game@analytics.com</p>
+        </div>
+    </footer>
+</body>
+</html>
